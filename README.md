@@ -8,7 +8,11 @@ All additions and changes to this repository will be recorded here with a brief 
 ```
 Sunday, 21 July, 2019, 23:59
 ```
-
+### Step 1.1 Change diagram
+![Alt text](https://github.com/nasyrov289/KidsGuru_neobis_java_be/blob/master/Diagram/Diagram.jpeg)
+```
+Sunday, 4 August, 2019, 23:52
+```
 ## Author 
 ```
 Nasyrov Alymzhan, Java/Kotlin Backend Engineer/
