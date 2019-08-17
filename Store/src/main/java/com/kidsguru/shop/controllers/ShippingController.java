@@ -11,15 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/shipping")
 public class ShippingController {
-    //private Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private ShippingService shippingService;
 
     @RequestMapping("/")
     public String defaultShipping() {
-        //logger.info("You've hit the default endpoint");
-        //logger.debug("This is a debugging message for the default endpoint");
         return "Default shipping endpoint";
     }
 

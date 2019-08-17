@@ -11,15 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-    //private Logger logger = LoggerFactory.getLogger(OrderController.class);
-
     @Autowired
     private CartService cartService;
 
     @RequestMapping("/")
     public String defaultCart() {
-        //logger.info("You've hit the default endpoint");
-        //logger.debug("This is a debugging message for the default endpoint");
         return "Default cart endpoint";
     }
 

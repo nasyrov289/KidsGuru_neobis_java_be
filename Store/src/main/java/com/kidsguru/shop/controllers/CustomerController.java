@@ -11,15 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-    //private Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private CustomerService customerService;
 
     @RequestMapping("/")
     public String defaultCustomer() {
-        //logger.info("You've hit the default endpoint");
-        //logger.debug("This is a debugging message for the default endpoint");
         return "Default customer endpoint";
     }
 
