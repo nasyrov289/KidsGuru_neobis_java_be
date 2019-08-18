@@ -24,11 +24,6 @@ public class OrderItemController {
         return orderItemService.getOrderItemById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public void updateOrderItem(@RequestBody OrderItem orderItem) {
-        orderItemService.saveOrderItem(orderItem);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public OrderItem createOrderItem(@RequestBody OrderItem orderItem) {
         return orderItemService.saveOrderItem(orderItem);

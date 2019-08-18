@@ -3,6 +3,7 @@ package com.kidsguru.shop.services;
 import com.kidsguru.shop.entities.CartEntity;
 import com.kidsguru.shop.models.Cart;
 import com.kidsguru.shop.repositories.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 public class CartService {
+    @Autowired
     private CartRepository cartRepository;
 
     public Cart getCartById(int cartId) {

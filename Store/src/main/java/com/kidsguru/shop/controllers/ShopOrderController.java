@@ -45,4 +45,9 @@ public class ShopOrderController {
     public void deleteShopOrderById(@PathParam("id") int id) {
         shopOrderService.deleteShopOrderById(id);
     }
+
+    @RequestMapping(value = "deleteAll", method = RequestMethod.DELETE)
+    public void deleteAllOrder(@RequestBody ShopOrder shopOrder) {
+        shopOrderService.deleteAllShopOrder(shopOrder);
+    }
 }

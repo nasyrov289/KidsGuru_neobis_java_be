@@ -3,6 +3,7 @@ package com.kidsguru.shop.services;
 import com.kidsguru.shop.entities.CustomerEntity;
 import com.kidsguru.shop.models.Customer;
 import com.kidsguru.shop.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 
 @Service
 public class CustomerService {
+
+    @Autowired
     private CustomerRepository customerRepository;
 
     public Customer getCustomerById(int customerId) {

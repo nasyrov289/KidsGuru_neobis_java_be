@@ -3,6 +3,7 @@ package com.kidsguru.shop.services;
 import com.kidsguru.shop.entities.ShopOrderEntity;
 import com.kidsguru.shop.models.ShopOrder;
 import com.kidsguru.shop.repositories.ShopOrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 public class ShopOrderService {
+    @Autowired
     private ShopOrderRepository shopOrderRepository;
 
     public ShopOrder getShopOrderById(int orderId) {
@@ -31,5 +33,9 @@ public class ShopOrderService {
 
     public void deleteShopOrderById(int orderId) {
         shopOrderRepository.deleteById(orderId);
+    }
+
+    public void deleteAllShopOrder(ShopOrder shopOrder) {
+        shopOrderRepository.deleteAll();
     }
 }
