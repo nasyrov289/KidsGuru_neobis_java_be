@@ -18,13 +18,6 @@ public class CartItemService {
         return new CartItem(cartItemRepository.findById(productId).orElse(new CartItemEntity()));
     }
 
-    public List<CartItem> getAllCartItem() {
-        ArrayList<CartItem> cartItemList = new ArrayList<>();
-        for (int i = 0; i < cartItemRepository.findAll().size(); i++) {
-            cartItemList.add(new CartItem(cartItemRepository.findAll().get(i)));
-        }
-        return cartItemList;
-    }
 
     public CartItem saveCartItem(CartItem cartItem) {
         CartItemEntity saveResult = cartItemRepository.save(cartItem.convertToEntity());

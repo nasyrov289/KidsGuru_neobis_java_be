@@ -25,12 +25,6 @@ public class CartItemController {
         return cartItemService.getCartItemById(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<CartItem> getAllCartItem() {
-        return cartItemService.getAllCartItem();
-    }
-
-
     @RequestMapping(method = RequestMethod.PUT)
     public void updateCartItem(@RequestBody CartItem cartItem) {
         cartItemService.saveCartItem(cartItem);

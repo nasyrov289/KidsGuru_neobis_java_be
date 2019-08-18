@@ -18,13 +18,6 @@ public class OrderItemService {
         return new OrderItem(orderItemRepository.findById(orderId).orElse(new OrderItemEntity()));
     }
 
-    public List<OrderItem> getAllOrderItem() {
-        ArrayList<OrderItem> orderItemList = new ArrayList<>();
-        for (int i = 0; i < orderItemRepository.findAll().size(); i++) {
-            orderItemList.add(new OrderItem(orderItemRepository.findAll().get(i)));
-        }
-        return orderItemList;
-    }
 
     public OrderItem saveOrderItem(OrderItem orderItem) {
         OrderItemEntity saveResult = orderItemRepository.save(orderItem.convertToEntity());
