@@ -2,10 +2,9 @@ package com.kidsguru.shop.models;
 
 import com.kidsguru.shop.entities.CustomerEntity;
 
-import javax.persistence.OneToMany;
-
 public class Customer {
     private int customerId;
+    private int userId;
     private int addressId;
     private String customerName;
     private String customerEmail;
@@ -14,8 +13,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, int addressId, String customerName, String customerEmail, String paymentInfo) {
+    public Customer(int customerId, int userId, int addressId, String customerName, String customerEmail, String paymentInfo) {
         this.customerId = customerId;
+        this.userId = userId;
         this.addressId = addressId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -24,13 +24,15 @@ public class Customer {
 
     public Customer(CustomerEntity customerEntity) {
         this.addressId = customerEntity.getAddressId();
+        this.userId = customerEntity.getUserId();
         this.customerId = customerEntity.getCustomerId();
         this.customerName = customerEntity.getCustomerName();
         this.customerEmail = customerEntity.getCustomerEmail();
         this.paymentInfo = customerEntity.getPaymentInfo();
     }
-    public CustomerEntity convertToEntity(){
-        return new CustomerEntity(addressId, customerId, customerName, customerEmail, paymentInfo);
+
+    public CustomerEntity convertToEntity() {
+        return new CustomerEntity(addressId, userId, customerId, customerName, customerEmail, paymentInfo);
     }
 
     public int getCustomerId() {
@@ -39,6 +41,14 @@ public class Customer {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getAddressId() {

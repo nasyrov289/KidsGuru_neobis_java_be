@@ -15,7 +15,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public Product getProductById(int productId) {
-        return new Product(productRepository.findById(productId).orElse(new ProductEntity()));
+        return new Product(productRepository.findById(productId).orElseThrow(RuntimeException::new));
     }
 
     public List<Product> getAllProduct() {

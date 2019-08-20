@@ -15,7 +15,7 @@ public class ShippingService {
     private ShippingRepository shippingRepository;
 
     public Shipping getShippingById(int shippingId) {
-        return new Shipping(shippingRepository.findById(shippingId).orElse(new ShippingEntity()));
+        return new Shipping(shippingRepository.findById(shippingId).orElseThrow(RuntimeException::new));
     }
 
     public List<Shipping> getAllShipping() {

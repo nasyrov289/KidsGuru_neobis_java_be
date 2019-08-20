@@ -1,5 +1,6 @@
 package com.kidsguru.shop.models;
 
+
 import com.kidsguru.shop.entities.ShippingEntity;
 
 public class Shipping {

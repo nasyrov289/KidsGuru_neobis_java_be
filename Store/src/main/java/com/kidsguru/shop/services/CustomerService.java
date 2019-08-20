@@ -16,7 +16,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public Customer getCustomerById(int customerId) {
-        return new Customer(customerRepository.findById(customerId).orElse(new CustomerEntity()));
+        return new Customer(customerRepository.findById(customerId).orElseThrow(RuntimeException::new));
     }
 
     public List<Customer> getAllCustomer() {

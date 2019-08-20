@@ -4,6 +4,7 @@ import com.kidsguru.shop.entities.SellerEntity;
 
 public class Seller {
     private int sellerId;
+    private int userId;
     private String sellerName;
     private String sellerEmail;
     private String phone;
@@ -12,8 +13,9 @@ public class Seller {
 
     }
 
-    public Seller(int sellerId, String sellerName, String sellerEmail, String phone) {
+    public Seller(int sellerId, int userId, String sellerName, String sellerEmail, String phone) {
         this.sellerId = sellerId;
+        this.userId = userId;
         this.sellerName = sellerName;
         this.sellerEmail = sellerEmail;
         this.phone = phone;
@@ -21,13 +23,14 @@ public class Seller {
 
     public Seller(SellerEntity sellerEntity) {
         this.sellerId = sellerEntity.getSellerId();
+        this.userId = sellerEntity.getUserId();
         this.sellerName = sellerEntity.getSellerName();
         this.sellerEmail = sellerEntity.getSellerEmail();
         this.phone = sellerEntity.getPhone();
     }
 
     public SellerEntity convertToEntity() {
-        return new SellerEntity(sellerId, sellerName, sellerEmail, phone);
+        return new SellerEntity(sellerId, userId, sellerName, sellerEmail, phone);
     }
 
     public int getSellerId() {
@@ -36,6 +39,14 @@ public class Seller {
 
     public void setSellerId(int sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getSellerName() {

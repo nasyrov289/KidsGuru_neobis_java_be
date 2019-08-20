@@ -93,4 +93,5 @@ public class Address {
     public void setOther(String other) {
         this.other = other;
     }
+
 }

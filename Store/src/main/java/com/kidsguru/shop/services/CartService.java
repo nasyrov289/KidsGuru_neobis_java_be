@@ -15,7 +15,7 @@ public class CartService {
     private CartRepository cartRepository;
 
     public Cart getCartById(int cartId) {
-        return new Cart(cartRepository.findById(cartId).orElse(new CartEntity()));
+        return new Cart(cartRepository.findById(cartId).orElseThrow(RuntimeException::new));
     }
 
     public List<Cart> getAllCart() {

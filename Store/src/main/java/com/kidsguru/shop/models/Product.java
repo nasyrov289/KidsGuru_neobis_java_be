@@ -11,17 +11,19 @@ public class Product {
     private String description;
     private int stock;
     private double unitCost;
+    private int sellerId;
 
     public Product() {
     }
 
-    public Product(int productId, String productName, Timestamp dateModified, String description, int stock, double unitCost) {
+    public Product(int productId, String productName, Timestamp dateModified, String description, int stock, double unitCost, int sellerId) {
         this.productId = productId;
         this.productName = productName;
         this.dateModified = dateModified;
         this.description = description;
         this.stock = stock;
         this.unitCost = unitCost;
+        this.sellerId = sellerId;
     }
 
     public Product(ProductEntity productEntity) {
@@ -31,11 +33,13 @@ public class Product {
         this.description = productEntity.getDescription();
         this.stock = productEntity.getStock();
         this.unitCost = productEntity.getUnitCost();
+        this.sellerId = productEntity.getSellerId();
     }
 
-    public ProductEntity convertToEntity(){
-        return new ProductEntity(productId, productName, dateModified, description, stock, unitCost);
+    public ProductEntity convertToEntity() {
+        return new ProductEntity(productId, productName, dateModified, description, stock, unitCost, sellerId);
     }
+
     public int getProductId() {
         return productId;
     }
@@ -82,5 +86,13 @@ public class Product {
 
     public void setUnitCost(double unitCost) {
         this.unitCost = unitCost;
+    }
+
+    public int getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
     }
 }

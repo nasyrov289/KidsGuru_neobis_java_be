@@ -6,16 +6,13 @@ import com.kidsguru.shop.repositories.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class CartItemService {
     @Autowired
     private CartItemRepository cartItemRepository;
 
     public CartItem getCartItemById(int productId) {
-        return new CartItem(cartItemRepository.findById(productId).orElse(new CartItemEntity()));
+        return new CartItem(cartItemRepository.findById(productId).orElseThrow(RuntimeException::new));
     }
 
 

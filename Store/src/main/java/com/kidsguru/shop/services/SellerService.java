@@ -15,7 +15,7 @@ public class SellerService {
     private SellerRepository sellerRepository;
 
     public Seller getSellerById(int sellerId) {
-        return new Seller(sellerRepository.findById(sellerId).orElse(new SellerEntity()));
+        return new Seller(sellerRepository.findById(sellerId).orElseThrow(RuntimeException::new));
     }
 
     public List<Seller> getAllSeller() {

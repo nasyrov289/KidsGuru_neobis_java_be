@@ -6,16 +6,13 @@ import com.kidsguru.shop.repositories.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class OrderItemService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
     public OrderItem getOrderItemById(int orderId) {
-        return new OrderItem(orderItemRepository.findById(orderId).orElse(new OrderItemEntity()));
+        return new OrderItem(orderItemRepository.findById(orderId).orElseThrow(RuntimeException::new));
     }
 
 

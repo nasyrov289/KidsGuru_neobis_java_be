@@ -15,7 +15,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User getUserById(int userId) {
-        return new User(userRepository.findById(userId).orElse(new UserEntity()));
+        return new User(userRepository.findById(userId).orElseThrow(RuntimeException::new));
     }
 
     public List<User> getAllUser() {

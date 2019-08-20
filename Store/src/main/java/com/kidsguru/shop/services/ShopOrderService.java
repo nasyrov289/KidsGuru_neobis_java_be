@@ -15,7 +15,7 @@ public class ShopOrderService {
     private ShopOrderRepository shopOrderRepository;
 
     public ShopOrder getShopOrderById(int orderId) {
-        return new ShopOrder(shopOrderRepository.findById(orderId).orElse(new ShopOrderEntity()));
+        return new ShopOrder(shopOrderRepository.findById(orderId).orElseThrow(RuntimeException::new));
     }
 
     public List<ShopOrder> getAllShopOrder() {
