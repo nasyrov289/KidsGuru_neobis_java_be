@@ -17,13 +17,11 @@ public class OrderItem {
     }
 
     public OrderItem(OrderItemEntity orderItemEntity) {
-        this.orderId = orderItemEntity.getOrderId();
-        this.productId = orderItemEntity.getProductId();
         this.quantity = orderItemEntity.getQuantity();
     }
 
     public OrderItemEntity convertToEntity(){
-        return new OrderItemEntity(orderId, productId, quantity);
+        return new OrderItemEntity(quantity);
     }
     public int getProductId() {
         return productId;

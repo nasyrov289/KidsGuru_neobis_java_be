@@ -35,7 +35,7 @@ public class CartEntity {
     }
 
     @Basic
-    @Column(name = "sub_total", nullable = false)
+    @Column(name = "sub_total")
     public double getSubTotal() {
         return subTotal;
     }
@@ -63,9 +63,7 @@ public class CartEntity {
 
         if (cartId != that.cartId) return false;
         if (Double.compare(that.subTotal, subTotal) != 0) return false;
-        if (customerId != that.customerId) return false;
-
-        return true;
+        return customerId == that.customerId;
     }
 
     @Override

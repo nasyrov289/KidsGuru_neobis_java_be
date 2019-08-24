@@ -1,8 +1,6 @@
 package com.kidsguru.shop.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
@@ -10,8 +8,14 @@ public class CartItemEntityPK implements Serializable {
     private int productId;
     private int cartId;
 
-    @Column(name = "product_id")
-    @Id
+    public CartItemEntityPK() {
+    }
+
+    public CartItemEntityPK(int productId, int cartId) {
+        this.productId = productId;
+        this.cartId = cartId;
+    }
+
     public int getProductId() {
         return productId;
     }
@@ -20,8 +24,6 @@ public class CartItemEntityPK implements Serializable {
         this.productId = productId;
     }
 
-    @Column(name = "cart_id")
-    @Id
     public int getCartId() {
         return cartId;
     }

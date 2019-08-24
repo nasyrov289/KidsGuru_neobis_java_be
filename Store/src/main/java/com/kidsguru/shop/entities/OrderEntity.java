@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "shop_order", schema = "shop")
-public class ShopOrderEntity {
+public class OrderEntity {
     private int orderId;
     private String status;
     private Timestamp dateCreated;
@@ -13,10 +13,10 @@ public class ShopOrderEntity {
     private int customerId;
     private int shippingId;
 
-    public ShopOrderEntity() {
+    public OrderEntity() {
     }
 
-    public ShopOrderEntity(String status, Timestamp dateCreated, double subTotal, int customerId, int shippingId) {
+    public OrderEntity(String status, Timestamp dateCreated, double subTotal, int customerId, int shippingId) {
         this.status = status;
         this.dateCreated = dateCreated;
         this.subTotal = subTotal;
@@ -24,7 +24,7 @@ public class ShopOrderEntity {
         this.shippingId = shippingId;
     }
 
-    public ShopOrderEntity(int orderId, String status, Timestamp dateCreated, double subTotal, int customerId, int shippingId) {
+    public OrderEntity(int orderId, String status, Timestamp dateCreated, double subTotal, int customerId, int shippingId) {
         this.orderId = orderId;
         this.status = status;
         this.dateCreated = dateCreated;
@@ -45,7 +45,7 @@ public class ShopOrderEntity {
     }
 
     @Basic
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     public String getStatus() {
         return status;
     }
@@ -65,7 +65,7 @@ public class ShopOrderEntity {
     }
 
     @Basic
-    @Column(name = "sub_total", nullable = false)
+    @Column(name = "sub_total")
     public double getSubTotal() {
         return subTotal;
     }
@@ -99,16 +99,14 @@ public class ShopOrderEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShopOrderEntity that = (ShopOrderEntity) o;
+        OrderEntity that = (OrderEntity) o;
 
         if (orderId != that.orderId) return false;
         if (Double.compare(that.subTotal, subTotal) != 0) return false;
         if (customerId != that.customerId) return false;
         if (shippingId != that.shippingId) return false;
-        if (status != null ? !status.equals(that.status) : that.status != null) return false;
-        if (dateCreated != null ? !dateCreated.equals(that.dateCreated) : that.dateCreated != null) return false;
-
-        return true;
+        if (!status.equals(that.status)) return false;
+        return dateCreated.equals(that.dateCreated);
     }
 
     @Override
@@ -116,8 +114,8 @@ public class ShopOrderEntity {
         int result;
         long temp;
         result = orderId;
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
+        result = 31 * result + status.hashCode();
+        result = 31 * result + dateCreated.hashCode();
         temp = Double.doubleToLongBits(subTotal);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + customerId;

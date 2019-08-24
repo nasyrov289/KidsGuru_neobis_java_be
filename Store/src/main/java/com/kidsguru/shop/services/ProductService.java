@@ -1,6 +1,7 @@
 package com.kidsguru.shop.services;
 
 import com.kidsguru.shop.entities.ProductEntity;
+import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.Product;
 import com.kidsguru.shop.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,10 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Product getProductById(int productId) {
-        return new Product(productRepository.findById(productId).orElseThrow(RuntimeException::new));
+    public Product getProductById(int productId) throws Exception{
+        return new Product(productRepository.findById(productId).orElseThrow(RecordNotFoundException::new));
     }
 
-    public List<Product> getAllProduct() {
-        ArrayList<Product> productList = new ArrayList<>();
-        for (int i = 0; i < productRepository.findAll().size(); i++) {
-            productList.add(new Product(productRepository.findAll().get(i)));
-        }
-        return productList;
-    }
 
     public Product saveProduct(Product product) {
         ProductEntity saveResult = productRepository.save(product.convertToEntity());

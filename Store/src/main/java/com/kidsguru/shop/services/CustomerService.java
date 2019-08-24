@@ -6,9 +6,6 @@ import com.kidsguru.shop.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class CustomerService {
 
@@ -19,13 +16,6 @@ public class CustomerService {
         return new Customer(customerRepository.findById(customerId).orElseThrow(RuntimeException::new));
     }
 
-    public List<Customer> getAllCustomer() {
-        ArrayList<Customer> customerList = new ArrayList<>();
-        for (int i = 0; i < customerRepository.findAll().size(); i++) {
-            customerList.add(new Customer(customerRepository.findAll().get(i)));
-        }
-        return customerList;
-    }
 
     public Customer saveCustomer(Customer customer) {
         CustomerEntity saveResult = customerRepository.save(customer.convertToEntity());

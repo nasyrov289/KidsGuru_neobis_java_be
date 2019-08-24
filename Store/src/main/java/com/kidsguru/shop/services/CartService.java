@@ -1,29 +1,19 @@
 package com.kidsguru.shop.services;
 
 import com.kidsguru.shop.entities.CartEntity;
+import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.Cart;
 import com.kidsguru.shop.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CartService {
     @Autowired
     private CartRepository cartRepository;
 
-    public Cart getCartById(int cartId) {
-        return new Cart(cartRepository.findById(cartId).orElseThrow(RuntimeException::new));
-    }
-
-    public List<Cart> getAllCart() {
-        ArrayList<Cart> cartList = new ArrayList<>();
-        for (int i = 0; i < cartRepository.findAll().size(); i++) {
-            cartList.add(new Cart(cartRepository.findAll().get(i)));
-        }
-        return cartList;
+    public Cart getCartById(int cartId) throws Exception {
+        return new Cart(cartRepository.findById(cartId).orElseThrow(RecordNotFoundException::new));
     }
 
     public Cart saveCart(Cart cart) {

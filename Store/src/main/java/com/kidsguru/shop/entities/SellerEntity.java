@@ -50,7 +50,7 @@ public class SellerEntity {
     }
 
     @Basic
-    @Column(name = "seller_name", nullable = false)
+    @Column(name = "seller_name")
     public String getSellerName() {
         return sellerName;
     }
@@ -60,7 +60,7 @@ public class SellerEntity {
     }
 
     @Basic
-    @Column(name = "seller_email", nullable = false)
+    @Column(name = "seller_email")
     public String getSellerEmail() {
         return sellerEmail;
     }
@@ -70,7 +70,7 @@ public class SellerEntity {
     }
 
     @Basic
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone")
     public String getPhone() {
         return phone;
     }
@@ -88,20 +88,18 @@ public class SellerEntity {
 
         if (sellerId != that.sellerId) return false;
         if (userId != that.userId) return false;
-        if (sellerName != null ? !sellerName.equals(that.sellerName) : that.sellerName != null) return false;
-        if (sellerEmail != null ? !sellerEmail.equals(that.sellerEmail) : that.sellerEmail != null) return false;
-        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-
-        return true;
+        if (!sellerName.equals(that.sellerName)) return false;
+        if (!sellerEmail.equals(that.sellerEmail)) return false;
+        return phone.equals(that.phone);
     }
 
     @Override
     public int hashCode() {
         int result = sellerId;
         result = 31 * result + userId;
-        result = 31 * result + (sellerName != null ? sellerName.hashCode() : 0);
-        result = 31 * result + (sellerEmail != null ? sellerEmail.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + sellerName.hashCode();
+        result = 31 * result + sellerEmail.hashCode();
+        result = 31 * result + phone.hashCode();
         return result;
     }
 }

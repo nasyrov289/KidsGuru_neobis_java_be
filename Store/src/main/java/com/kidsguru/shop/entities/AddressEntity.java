@@ -13,9 +13,9 @@ public class AddressEntity {
     private String country;
     private String other;
 
-    public AddressEntity() {
-    }
+    public AddressEntity() { }
 
+    // without addressId
     public AddressEntity(String street, String streetNo, String unitNo, String city, String country, String other) {
         this.street = street;
         this.streetNo = streetNo;
@@ -36,6 +36,7 @@ public class AddressEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "address_id")
     public int getAddressId() {
         return addressId;
@@ -46,60 +47,48 @@ public class AddressEntity {
     }
 
     @Basic
-    @Column(name = "street", nullable = false)
-    public String getStreet() {
-        return street;
-    }
+    @Column(name = "street")
+    public String getStreet() { return street; }
 
     public void setStreet(String street) {
         this.street = street;
     }
 
     @Basic
-    @Column(name = "street_no", nullable = false)
-    public String getStreetNo() {
-        return streetNo;
-    }
+    @Column(name = "street_no")
+    public String getStreetNo() { return streetNo; }
 
     public void setStreetNo(String streetNo) {
         this.streetNo = streetNo;
     }
 
     @Basic
-    @Column(name = "unit_no", nullable = false)
-    public String getUnitNo() {
-        return unitNo;
-    }
+    @Column(name = "unit_no")
+    public String getUnitNo() { return unitNo; }
 
     public void setUnitNo(String unitNo) {
         this.unitNo = unitNo;
     }
 
     @Basic
-    @Column(name = "city", nullable = false)
-    public String getCity() {
-        return city;
-    }
+    @Column(name = "city")
+    public String getCity() { return city; }
 
     public void setCity(String city) {
         this.city = city;
     }
 
     @Basic
-    @Column(name = "country", nullable = false)
-    public String getCountry() {
-        return country;
-    }
+    @Column(name = "country")
+    public String getCountry() { return country; }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
     @Basic
-    @Column(name = "other", nullable = false)
-    public String getOther() {
-        return other;
-    }
+    @Column(name = "other")
+    public String getOther() { return other; }
 
     public void setOther(String other) {
         this.other = other;
@@ -125,13 +114,15 @@ public class AddressEntity {
 
     @Override
     public int hashCode() {
-        int result = addressId;
+        int result;
+        result = addressId;
         result = 31 * result + (street != null ? street.hashCode() : 0);
         result = 31 * result + (streetNo != null ? streetNo.hashCode() : 0);
         result = 31 * result + (unitNo != null ? unitNo.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (other != null ? other.hashCode() : 0);
+
         return result;
     }
 }

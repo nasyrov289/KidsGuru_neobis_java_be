@@ -47,7 +47,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "product_name", nullable = false)
+    @Column(name = "product_name")
     public String getProductName() {
         return productName;
     }
@@ -57,7 +57,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "date_modified", insertable = false, updatable = false)
+    @Column(name = "date_modified")
     public Timestamp getDateModified() {
         return dateModified;
     }
@@ -117,11 +117,9 @@ public class ProductEntity {
         if (stock != that.stock) return false;
         if (Double.compare(that.unitCost, unitCost) != 0) return false;
         if (sellerId != that.sellerId) return false;
-        if (productName != null ? !productName.equals(that.productName) : that.productName != null) return false;
-        if (dateModified != null ? !dateModified.equals(that.dateModified) : that.dateModified != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-
-        return true;
+        if (!productName.equals(that.productName)) return false;
+        if (!dateModified.equals(that.dateModified)) return false;
+        return description.equals(that.description);
     }
 
     @Override
@@ -129,9 +127,9 @@ public class ProductEntity {
         int result;
         long temp;
         result = productId;
-        result = 31 * result + (productName != null ? productName.hashCode() : 0);
-        result = 31 * result + (dateModified != null ? dateModified.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + productName.hashCode();
+        result = 31 * result + dateModified.hashCode();
+        result = 31 * result + description.hashCode();
         result = 31 * result + stock;
         temp = Double.doubleToLongBits(unitCost);
         result = 31 * result + (int) (temp ^ (temp >>> 32));

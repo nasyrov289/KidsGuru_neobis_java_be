@@ -24,7 +24,6 @@ public class ShippingEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "shipping_id")
     public int getShippingId() {
         return shippingId;
@@ -35,7 +34,7 @@ public class ShippingEntity {
     }
 
     @Basic
-    @Column(name = "type", nullable = false)
+    @Column(name = "type")
     public String getType() {
         return type;
     }
@@ -45,7 +44,7 @@ public class ShippingEntity {
     }
 
     @Basic
-    @Column(name = "shipping_cost", nullable = false)
+    @Column(name = "shipping_cost")
     public double getShippingCost() {
         return shippingCost;
     }
@@ -63,9 +62,7 @@ public class ShippingEntity {
 
         if (shippingId != that.shippingId) return false;
         if (Double.compare(that.shippingCost, shippingCost) != 0) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-
-        return true;
+        return type.equals(that.type);
     }
 
     @Override
@@ -73,7 +70,7 @@ public class ShippingEntity {
         int result;
         long temp;
         result = shippingId;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + type.hashCode();
         temp = Double.doubleToLongBits(shippingCost);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;

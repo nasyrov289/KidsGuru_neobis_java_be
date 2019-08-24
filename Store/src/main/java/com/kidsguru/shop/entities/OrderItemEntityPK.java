@@ -1,8 +1,6 @@
 package com.kidsguru.shop.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
@@ -10,8 +8,14 @@ public class OrderItemEntityPK implements Serializable {
     private int productId;
     private int orderId;
 
-    @Column(name = "product_id")
-    @Id
+    public OrderItemEntityPK() {
+    }
+
+    public OrderItemEntityPK(int productId, int orderId) {
+        this.productId = productId;
+        this.orderId = orderId;
+    }
+
     public int getProductId() {
         return productId;
     }
@@ -20,8 +24,6 @@ public class OrderItemEntityPK implements Serializable {
         this.productId = productId;
     }
 
-    @Column(name = "order_id")
-    @Id
     public int getOrderId() {
         return orderId;
     }
@@ -37,16 +39,16 @@ public class OrderItemEntityPK implements Serializable {
 
         OrderItemEntityPK that = (OrderItemEntityPK) o;
 
-        if (productId != that.productId) return false;
         if (orderId != that.orderId) return false;
-
-        return true;
+        return productId == that.productId;
     }
 
     @Override
     public int hashCode() {
-        int result = productId;
-        result = 31 * result + orderId;
+        int result;
+        result = orderId;
+        result = 31 * result + productId;
+
         return result;
     }
 }

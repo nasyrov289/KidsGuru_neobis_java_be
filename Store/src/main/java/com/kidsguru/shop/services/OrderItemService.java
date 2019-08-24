@@ -1,6 +1,8 @@
 package com.kidsguru.shop.services;
 
 import com.kidsguru.shop.entities.OrderItemEntity;
+import com.kidsguru.shop.entities.OrderItemEntityPK;
+import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.OrderItem;
 import com.kidsguru.shop.repositories.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,8 @@ public class OrderItemService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    public OrderItem getOrderItemById(int orderId) {
-        return new OrderItem(orderItemRepository.findById(orderId).orElseThrow(RuntimeException::new));
+    public OrderItem getOrderItemById(OrderItemEntityPK orderId) throws Exception{
+        return new OrderItem(orderItemRepository.findById(orderId).orElseThrow(RecordNotFoundException::new));
     }
 
 
@@ -21,7 +23,7 @@ public class OrderItemService {
         return new OrderItem(saveResult);
     }
 
-    public void deleteOrderItemById(int orderId) {
+    public void deleteOrderItemById(OrderItemEntityPK orderId) {
         orderItemRepository.deleteById(orderId);
     }
 }

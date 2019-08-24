@@ -1,51 +1,27 @@
 package com.kidsguru.shop.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "order_item", schema = "shop")
-@IdClass(OrderItemEntityPK.class)
 public class OrderItemEntity {
-    private int productId;
-    private int orderId;
+
+    @EmbeddedId
+    private OrderItemEntityPK orderItemEntityPK;
+
     private int quantity;
 
     public OrderItemEntity() {
     }
 
-    public OrderItemEntity(int orderId, int quantity) {
-        this.orderId = orderId;
+    public OrderItemEntity(int quantity) {
         this.quantity = quantity;
     }
 
-    public OrderItemEntity(int productId, int orderId, int quantity) {
-        this.productId = productId;
-        this.orderId = orderId;
-        this.quantity = quantity;
-    }
-
-    @Id
-    @Column(name = "product_id")
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    @Id
-    @Column(name = "order_id")
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    @Basic
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     public int getQuantity() {
         return quantity;
     }
@@ -61,18 +37,15 @@ public class OrderItemEntity {
 
         OrderItemEntity that = (OrderItemEntity) o;
 
-        if (productId != that.productId) return false;
-        if (orderId != that.orderId) return false;
         if (quantity != that.quantity) return false;
-
-        return true;
+        return orderItemEntityPK.equals(that.orderItemEntityPK);
     }
 
     @Override
     public int hashCode() {
-        int result = productId;
-        result = 31 * result + orderId;
+        int result = orderItemEntityPK.hashCode();
         result = 31 * result + quantity;
         return result;
     }
+
 }

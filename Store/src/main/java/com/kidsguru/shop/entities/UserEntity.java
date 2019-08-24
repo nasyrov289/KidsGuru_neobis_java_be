@@ -42,7 +42,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "username", nullable = false)
+    @Column(name = "username")
     public String getUserName() {
         return userName;
     }
@@ -52,7 +52,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -72,7 +72,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     public String getRole() {
         return role;
     }
@@ -89,21 +89,19 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
 
         if (userId != that.userId) return false;
-        if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (registerDate != null ? !registerDate.equals(that.registerDate) : that.registerDate != null) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
-
-        return true;
+        if (!userName.equals(that.userName)) return false;
+        if (!password.equals(that.password)) return false;
+        if (!registerDate.equals(that.registerDate)) return false;
+        return role.equals(that.role);
     }
 
     @Override
     public int hashCode() {
         int result = userId;
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + userName.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + registerDate.hashCode();
+        result = 31 * result + role.hashCode();
         return result;
     }
 }

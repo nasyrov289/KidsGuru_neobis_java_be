@@ -43,7 +43,6 @@ public class CustomerEntity {
         this.customerId = customerId;
     }
 
-    @Basic
     @Column(name = "user_id")
     public int getUserId() {
         return userId;
@@ -64,7 +63,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "customer_name", nullable = false)
+    @Column(name = "customer_name")
     public String getCustomerName() {
         return customerName;
     }
@@ -74,7 +73,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "customer_email", nullable = false)
+    @Column(name = "customer_email")
     public String getCustomerEmail() {
         return customerEmail;
     }
@@ -84,7 +83,7 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "payment_info", nullable = false)
+    @Column(name = "payment_info")
     public String getPaymentInfo() {
         return paymentInfo;
     }
@@ -103,12 +102,9 @@ public class CustomerEntity {
         if (customerId != that.customerId) return false;
         if (userId != that.userId) return false;
         if (addressId != that.addressId) return false;
-        if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
-        if (customerEmail != null ? !customerEmail.equals(that.customerEmail) : that.customerEmail != null)
-            return false;
-        if (paymentInfo != null ? !paymentInfo.equals(that.paymentInfo) : that.paymentInfo != null) return false;
-
-        return true;
+        if (!customerName.equals(that.customerName)) return false;
+        if (!customerEmail.equals(that.customerEmail)) return false;
+        return paymentInfo.equals(that.paymentInfo);
     }
 
     @Override
@@ -116,9 +112,9 @@ public class CustomerEntity {
         int result = customerId;
         result = 31 * result + userId;
         result = 31 * result + addressId;
-        result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
-        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
-        result = 31 * result + (paymentInfo != null ? paymentInfo.hashCode() : 0);
+        result = 31 * result + customerName.hashCode();
+        result = 31 * result + customerEmail.hashCode();
+        result = 31 * result + paymentInfo.hashCode();
         return result;
     }
 }

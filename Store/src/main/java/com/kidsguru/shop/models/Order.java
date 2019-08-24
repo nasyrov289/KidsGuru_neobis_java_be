@@ -1,21 +1,23 @@
 package com.kidsguru.shop.models;
 
-import com.kidsguru.shop.entities.ShopOrderEntity;
+import com.kidsguru.shop.entities.OrderEntity;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 
-public class ShopOrder {
+public class Order {
     private int orderId;
     private String status;
-    private Timestamp dateCreated;
+    private Instant dateCreated;
     private double subTotal;
     private int customerId;
     private int shippingId;
 
-    public ShopOrder() {
+    public Order() {
+
     }
 
-    public ShopOrder(int orderId, String status, Timestamp dateCreated, double subTotal, int customerId, int shippingId) {
+    public Order(int orderId, String status, Instant dateCreated, double subTotal, int customerId, int shippingId) {
         this.orderId = orderId;
         this.status = status;
         this.dateCreated = dateCreated;
@@ -24,24 +26,24 @@ public class ShopOrder {
         this.shippingId = shippingId;
     }
 
-    public ShopOrder(ShopOrderEntity shopOrderEntity) {
-        this.orderId = shopOrderEntity.getOrderId();
-        this.status = shopOrderEntity.getStatus();
-        this.dateCreated = shopOrderEntity.getDateCreated();
-        this.subTotal = shopOrderEntity.getSubTotal();
-        this.customerId = shopOrderEntity.getCustomerId();
-        this.shippingId = shopOrderEntity.getShippingId();
+    public Order(OrderEntity orderEntity) {
+        this.orderId = orderEntity.getOrderId();
+        this.status = orderEntity.getStatus();
+        this.dateCreated = orderEntity.getDateCreated() == null ? null : orderEntity.getDateCreated().toInstant();
+        this.subTotal = orderEntity.getSubTotal();
+        this.customerId = orderEntity.getCustomerId();
+        this.shippingId = orderEntity.getShippingId();
     }
 
-    public ShopOrderEntity convertToEntity() {
-        return new ShopOrderEntity(orderId, status, dateCreated, subTotal, customerId, shippingId);
+    public OrderEntity convertToEntity() {
+        return new OrderEntity(orderId, status, dateCreated == null ? null : Timestamp.from(dateCreated), subTotal, customerId, shippingId);
     }
 
-    public int getOrderId() {
+    public int getShopOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setShopOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -53,11 +55,11 @@ public class ShopOrder {
         this.status = status;
     }
 
-    public Timestamp getDateCreated() {
+    public Instant getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Timestamp dateCreated) {
+    public void setDateCreated(Instant dateCreated) {
         this.dateCreated = dateCreated;
     }
 

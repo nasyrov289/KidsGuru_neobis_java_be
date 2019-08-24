@@ -45,7 +45,7 @@ public class CartItemEntity {
     }
 
     @Basic
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     public int getQuantity() {
         return quantity;
     }
