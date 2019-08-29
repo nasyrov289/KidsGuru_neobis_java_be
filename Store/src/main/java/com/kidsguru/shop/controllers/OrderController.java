@@ -1,5 +1,6 @@
 package com.kidsguru.shop.controllers;
 
+import com.kidsguru.shop.entities.OrderItemEntityPK;
 import com.kidsguru.shop.models.Order;
 import com.kidsguru.shop.models.OrderAndShipping;
 
@@ -44,7 +45,7 @@ public class OrderController {
 
 
     // get order by order_id
-    @RequestMapping(value = "order{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Order getOrder(@PathVariable("id") int id) throws Exception {
         return orderService.getOrderById(id);
     }

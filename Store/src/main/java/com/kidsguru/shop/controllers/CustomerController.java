@@ -1,7 +1,7 @@
 package com.kidsguru.shop.controllers;
 
 import com.kidsguru.shop.models.Customer;
-import com.kidsguru.shop.models.CustomerAndUser;
+import com.kidsguru.shop.models.Customer;
 import com.kidsguru.shop.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,15 +32,15 @@ public class CustomerController {
 
     // update customer information
     @RequestMapping(method = RequestMethod.PUT)
-    public void putCustomer(@RequestBody CustomerAndUser customerAndUser) throws Exception {
-        customerService.saveCustomer(customerAndUser);
+    public void putCustomer(@RequestBody Customer customer) throws Exception {
+        customerService.saveCustomer(customer);
     }
 
 
     // create new customer
     @RequestMapping(method = RequestMethod.POST)
-    public Customer postCustomer(@RequestBody CustomerAndUser customerAndUser) throws Exception {
-        return customerService.saveCustomer(customerAndUser);
+    public Customer postCustomer(@RequestBody Customer customer) {
+        return customerService.saveCustomer(customer);
     }
 
 

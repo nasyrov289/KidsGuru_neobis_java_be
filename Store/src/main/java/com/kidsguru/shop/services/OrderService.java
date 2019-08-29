@@ -2,12 +2,12 @@ package com.kidsguru.shop.services;
 
 
 import com.kidsguru.shop.entities.OrderEntity;
-import com.kidsguru.shop.exception.BadRequestException;
-import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.Order;
 import com.kidsguru.shop.models.OrderAndShipping;
 import com.kidsguru.shop.models.Shipping;
 import com.kidsguru.shop.repositories.OrderRepository;
+import com.kidsguru.shop.exception.BadRequestException;
+import com.kidsguru.shop.exception.RecordNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,11 +58,11 @@ public class OrderService {
     public Order saveOrder(OrderAndShipping orderAndShipping) throws Exception {
 
         // check customer id
-        try {
-            customerService.getCustomerById(orderAndShipping.getCustomerId());
-        } catch (RecordNotFoundException e) {
-            throw new BadRequestException();
-        }
+//        try {
+//            customerService.getCustomerById(orderAndShipping.getCustomerId());
+//        } catch (RecordNotFoundException e) {
+//            throw new BadRequestException();
+//        }
 
         // add shipping
         Shipping shipping = shippingService.saveShipping(orderAndShipping.extractShipping());

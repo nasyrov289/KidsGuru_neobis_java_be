@@ -1,7 +1,7 @@
 package com.kidsguru.shop.controllers;
 
 import com.kidsguru.shop.models.Address;
-import com.kidsguru.shop.models.AddressUserAndCustomer;
+import com.kidsguru.shop.models.Address;
 import com.kidsguru.shop.services.AddressService;
 import com.kidsguru.shop.services.CustomerService;
 import com.kidsguru.shop.services.UserService;
@@ -35,14 +35,14 @@ public class AddressController {
 
     // update address
     @RequestMapping(method = RequestMethod.PUT)
-    public void putAddress(@RequestBody AddressUserAndCustomer addressUserAndCustomer) throws Exception {
-        addressService.saveAddress(addressUserAndCustomer);
+    public void putAddress(@RequestBody Address address) throws Exception {
+        addressService.saveAddress(address);
     }
 
     // create new address
     @RequestMapping(method = RequestMethod.POST)
-    public Address postAddress(@RequestBody AddressUserAndCustomer addressUserAndCustomer) throws Exception {
-        return addressService.saveAddress(addressUserAndCustomer);
+    public Address postAddress(@RequestBody Address address) throws Exception {
+        return addressService.saveAddress(address);
     }
 
 

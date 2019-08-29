@@ -6,13 +6,17 @@ import com.kidsguru.shop.models.Seller;
 import com.kidsguru.shop.models.SellerAndUser;
 import com.kidsguru.shop.models.User;
 import com.kidsguru.shop.repositories.SellerRepository;
+import com.kidsguru.shop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SellerService {
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
     private SellerRepository sellerRepository;
@@ -22,12 +26,12 @@ public class SellerService {
     }
 
 
-    public Seller saveSeller(SellerAndUser sellerAndUser) throws Exception{
+    public Seller saveSeller(SellerAndUser sellerAndUser) {
 
-        User user = userService.saveUser(sellerAndUser.extractUser());
+        userRepository.save(sellerAndUser.extractUser().convertToEntity());
 
         Seller seller = sellerAndUser.extractSeller();
-        seller.setUserId(user.getUserId());
+        seller.setUserId(sellerAndUser.getUserId());
 
         SellerEntity saveResult = sellerRepository.save(seller.convertToEntity());
         return new Seller(saveResult);

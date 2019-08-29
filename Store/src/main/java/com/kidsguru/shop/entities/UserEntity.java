@@ -31,7 +31,6 @@ public class UserEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     public int getUserId() {
         return userId;
