@@ -14,7 +14,7 @@ public class OrderItemService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    public OrderItem getOrderItemById(OrderItemEntityPK orderId) throws Exception{
+    public OrderItem getOrderItemById(OrderItemEntityPK orderId) throws Exception {
         return new OrderItem(orderItemRepository.findById(orderId).orElseThrow(RecordNotFoundException::new));
     }
 

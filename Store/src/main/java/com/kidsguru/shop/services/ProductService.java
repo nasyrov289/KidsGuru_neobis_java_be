@@ -12,11 +12,11 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Product getProductById(int productId) throws Exception{
+    public Product getProductById(int productId) throws Exception {
         return new Product(productRepository.findById(productId).orElseThrow(RecordNotFoundException::new));
     }
 
-    public Product getProductBySellerId(int sellerId) throws Exception{
+    public Product getProductBySellerId(int sellerId) throws Exception {
         return new Product(productRepository.findById(sellerId).orElseThrow(RecordNotFoundException::new));
     }
 

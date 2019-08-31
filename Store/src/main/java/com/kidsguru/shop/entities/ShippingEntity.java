@@ -5,22 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "shipping")
 public class ShippingEntity {
-    /*
-    CREATE TABLE IF NOT EXISTS `shipping` (
-      `shipping_id` INT NOT NULL AUTO_INCREMENT,
-      `type` VARCHAR(255), -- delivery or pickup at pickup points
-      `shipping_cost` FLOAT,
-      PRIMARY KEY (`shipping_id`)
-      );
-      */
 
     private int shippingId;
     private String type;
     private double shippingCost;
 
-    public ShippingEntity() {}
+    public ShippingEntity() {
+    }
 
-    public ShippingEntity (int shippingId, String type, double shippingCost) {
+    public ShippingEntity(int shippingId, String type, double shippingCost) {
         this.shippingId = shippingId;
         this.type = type;
         this.shippingCost = shippingCost;

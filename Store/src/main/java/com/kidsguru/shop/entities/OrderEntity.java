@@ -1,9 +1,5 @@
 package com.kidsguru.shop.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -11,19 +7,6 @@ import java.sql.Timestamp;
 @Table(name = "shop_order")
 public class OrderEntity {
 
-    /*
-    CREATE TABLE IF NOT EXISTS `shop_order` (
-      `order_id` INT NOT NULL AUTO_INCREMENT,
-      `status` VARCHAR(255) NOT NULL,
-      `date_created` DATE NOT NULL,
-      `sub_total` FLOAT NOT NULL,
-      `customer_id` INT NOT NULL,
-      `shipping_id` INT NOT NULL,
-      PRIMARY KEY (`order_id`),
-      FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
-      FOREIGN KEY (`shipping_id`) REFERENCES `shipping` (`shipping_id`)
-      );
-     */
 
     private int orderId;
     private String status;
@@ -32,7 +15,8 @@ public class OrderEntity {
     private int customerId;
     private int shippingId;
 
-    public OrderEntity() { }
+    public OrderEntity() {
+    }
 
     public OrderEntity(int orderId, String status, Timestamp dateCreated, double subtotal, int customerId, int shippingId) {
         this.orderId = orderId;
@@ -101,7 +85,6 @@ public class OrderEntity {
     public void setShippingId(int shippingId) {
         this.shippingId = shippingId;
     }
-
 
 
     @Override

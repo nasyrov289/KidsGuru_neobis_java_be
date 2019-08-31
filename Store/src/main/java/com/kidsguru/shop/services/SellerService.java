@@ -4,14 +4,10 @@ import com.kidsguru.shop.entities.SellerEntity;
 import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.Seller;
 import com.kidsguru.shop.models.SellerAndUser;
-import com.kidsguru.shop.models.User;
 import com.kidsguru.shop.repositories.SellerRepository;
 import com.kidsguru.shop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class SellerService {
@@ -21,7 +17,7 @@ public class SellerService {
     @Autowired
     private SellerRepository sellerRepository;
 
-    public Seller getSellerById(int sellerId) throws Exception{
+    public Seller getSellerById(int sellerId) throws Exception {
         return new Seller(sellerRepository.findById(sellerId).orElseThrow(RecordNotFoundException::new));
     }
 
@@ -37,7 +33,9 @@ public class SellerService {
         return new Seller(saveResult);
     }
 
-    public void deleteSellerById(int sellerId) {
+    public void deleteSellerById(int sellerId) throws Exception {
+        int temp = getSellerById(sellerId).getUserId();
         sellerRepository.deleteById(sellerId);
+        userRepository.deleteById(temp);
     }
 }

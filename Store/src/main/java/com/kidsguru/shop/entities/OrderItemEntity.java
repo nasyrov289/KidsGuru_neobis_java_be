@@ -1,29 +1,22 @@
 package com.kidsguru.shop.entities;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.*;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "order_item")
 public class OrderItemEntity {
 
-    /*
-    CREATE TABLE IF NOT EXISTS `order_item` (
-      `product_id` INT NOT NULL,
-      `order_id` INT NOT NULL,
-      `quantity` INT NOT NULL,
-      PRIMARY KEY (`product_id`,`order_id`),
-      FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-      FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
-      );
-     */
 
     @EmbeddedId
     private OrderItemEntityPK orderItemEntityPK;
 
     private int quantity;
 
-    public OrderItemEntity(int quantity) { }
+    public OrderItemEntity(int quantity) {
+    }
 
     @Column(name = "quantity")
     public int getQuantity() {

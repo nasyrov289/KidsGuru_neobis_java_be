@@ -6,18 +6,6 @@ import javax.persistence.*;
 @Table(name = "customer")
 public class CustomerEntity {
 
-    /*
-    CREATE TABLE IF NOT EXISTS `customer` (
-      `customer_id` INT NOT NULL AUTO_INCREMENT,
-      `user_id` INT NOT NULL,
-      `address_id` INT NOT NULL,
-      `customer_name` VARCHAR(255) NOT NULL,
-      `customer_email` VARCHAR(255) NOT NULL,
-      `payment_info` VARCHAR(255),
-      PRIMARY KEY (`customer_id`),
-      FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-    );
-     */
 
     private int customerId;
     private int userId;
@@ -26,7 +14,8 @@ public class CustomerEntity {
     private String customerEmail;
     private String paymentInfo; // could be hex encoded, later?
 
-    public CustomerEntity() { }
+    public CustomerEntity() {
+    }
 
     // without customerId
     public CustomerEntity(int userId, int addressId, String customerName, String customerEmail, String paymentInfo) {
@@ -47,7 +36,6 @@ public class CustomerEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
     public int getCustomerId() {
         return customerId;
@@ -106,7 +94,6 @@ public class CustomerEntity {
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,7 +105,8 @@ public class CustomerEntity {
         if (userId != that.userId) return false;
         if (addressId != that.addressId) return false;
         if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
-        if (customerEmail != null ? !customerEmail.equals(that.customerEmail) : that.customerEmail != null) return false;
+        if (customerEmail != null ? !customerEmail.equals(that.customerEmail) : that.customerEmail != null)
+            return false;
         if (paymentInfo != null ? !paymentInfo.equals(that.paymentInfo) : that.paymentInfo != null) return false;
 
         return true;

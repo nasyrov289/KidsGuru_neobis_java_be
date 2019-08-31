@@ -3,7 +3,7 @@ package com.kidsguru.shop.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "seller", schema = "shop")
+@Table(name = "seller")
 public class SellerEntity {
     private int sellerId;
     private int userId;

@@ -1,9 +1,9 @@
 package com.kidsguru.shop.services;
 
 import com.kidsguru.shop.entities.ShippingEntity;
+import com.kidsguru.shop.exception.RecordNotFoundException;
 import com.kidsguru.shop.models.Shipping;
 import com.kidsguru.shop.repositories.ShippingRepository;
-import com.kidsguru.shop.exception.RecordNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -42,7 +42,6 @@ com/kidsguru/shop/controllers/CartItemController.class
 com/kidsguru/shop/repositories/AddressRepository.class
 com/kidsguru/shop/repositories/UserRepository.class
 com/kidsguru/shop/models/User.class
-com/kidsguru/shop/models/CustomerAndUser.class
 com/kidsguru/shop/services/CartItemService.class
 com/kidsguru/shop/entities/OrderEntity.class
 com/kidsguru/shop/controllers/AddressController.class
@@ -53,7 +52,6 @@ com/kidsguru/shop/entities/CustomerEntity.class
 com/kidsguru/shop/repositories/CartItemRepository.class
 com/kidsguru/shop/services/ShippingService.class
 com/kidsguru/shop/controllers/CustomerController.class
-com/kidsguru/shop/models/AddressUserAndCustomer.class
 com/kidsguru/shop/models/Cart.class
 com/kidsguru/shop/models/Shipping.class
 com/kidsguru/shop/models/CartItem.class

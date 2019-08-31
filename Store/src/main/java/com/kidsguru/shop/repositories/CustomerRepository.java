@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Integer> {
 
     void deleteCustomerEntitiesByAddressId(int addressId);
+
+    CustomerEntity findByUserId(int customerId);
 }

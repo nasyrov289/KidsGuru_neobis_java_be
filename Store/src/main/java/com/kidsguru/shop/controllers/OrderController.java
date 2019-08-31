@@ -1,9 +1,7 @@
 package com.kidsguru.shop.controllers;
 
-import com.kidsguru.shop.entities.OrderItemEntityPK;
 import com.kidsguru.shop.models.Order;
 import com.kidsguru.shop.models.OrderAndShipping;
-
 import com.kidsguru.shop.services.OrderItemService;
 import com.kidsguru.shop.services.OrderService;
 import com.kidsguru.shop.services.ShippingService;
@@ -11,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 // Done
 @RestController
 @RequestMapping("/order")
@@ -63,5 +62,12 @@ public class OrderController {
     public Order postOrder(@RequestBody OrderAndShipping orderAndShipping) throws Exception {
         return orderService.saveOrder(orderAndShipping);
     }
+
+    @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
+    public void deleteOrder(@PathVariable int id) throws Exception {
+        orderService.deleteOrderById(id);
+    }
+
+
 
 }

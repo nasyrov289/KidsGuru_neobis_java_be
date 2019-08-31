@@ -6,19 +6,6 @@ import javax.persistence.*;
 @Table(name = "address")
 public class AddressEntity {
 
-    /*
-    CREATE TABLE IF NOT EXISTS `address` (
-      `address_id` INT NOT NULL AUTO_INCREMENT,
-      `street` VARCHAR(255),
-      `street_no` VARCHAR(255),
-      `unit_no` VARCHAR(255),
-      `city` VARCHAR(255),
-      `country` VARCHAR(255),
-      `other` VARCHAR(255),
-      PRIMARY KEY (`address_id`)
-    );
-     */
-
     private int addressId;
     private String street;
     private String streetNo;
@@ -27,7 +14,8 @@ public class AddressEntity {
     private String country;
     private String other;
 
-    public AddressEntity() { }
+    public AddressEntity() {
+    }
 
     // without addressId
     public AddressEntity(String street, String streetNo, String unitNo, String city, String country, String other) {
@@ -50,7 +38,6 @@ public class AddressEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "address_id")
     public int getAddressId() {
         return addressId;
@@ -62,7 +49,9 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "street")
-    public String getStreet() { return street; }
+    public String getStreet() {
+        return street;
+    }
 
     public void setStreet(String street) {
         this.street = street;
@@ -70,7 +59,9 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "street_no")
-    public String getStreetNo() { return streetNo; }
+    public String getStreetNo() {
+        return streetNo;
+    }
 
     public void setStreetNo(String streetNo) {
         this.streetNo = streetNo;
@@ -78,7 +69,9 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "unit_no")
-    public String getUnitNo() { return unitNo; }
+    public String getUnitNo() {
+        return unitNo;
+    }
 
     public void setUnitNo(String unitNo) {
         this.unitNo = unitNo;
@@ -86,7 +79,9 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "city")
-    public String getCity() { return city; }
+    public String getCity() {
+        return city;
+    }
 
     public void setCity(String city) {
         this.city = city;
@@ -94,7 +89,9 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "country")
-    public String getCountry() { return country; }
+    public String getCountry() {
+        return country;
+    }
 
     public void setCountry(String country) {
         this.country = country;
@@ -102,12 +99,13 @@ public class AddressEntity {
 
     @Basic
     @Column(name = "other")
-    public String getOther() { return other; }
+    public String getOther() {
+        return other;
+    }
 
     public void setOther(String other) {
         this.other = other;
     }
-
 
 
     @Override
