@@ -18,9 +18,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
+    @Autowired
     private ShippingService shippingService;
 
+    @Autowired
     private OrderItemService orderItemService;
 
     @RequestMapping("/")
@@ -63,11 +64,10 @@ public class OrderController {
         return orderService.saveOrder(orderAndShipping);
     }
 
-    @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public void deleteOrder(@PathVariable int id) throws Exception {
         orderService.deleteOrderById(id);
     }
-
 
 
 }
